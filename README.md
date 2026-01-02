@@ -11,3 +11,16 @@ Client-side page access gating script.
   data-password="YOUR_PASSWORD">
 </script>
 
+Notes
+
+Requires a valid license
+
+Intended for lightweight access control
+
+Not a replacement for server-side authentication
+
+Support
+
+Contact: receiptx86@gmail.com
+
+
