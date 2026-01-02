@@ -1,0 +1,121 @@
+<!-- 
+  LockIn Usage Examples
+  Copy and paste these examples into your HTML
+-->
+
+<!-- EXAMPLE 1: Basic Usage -->
+<!-- Minimal configuration with just license key and password -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="mysecret123"></script>
+
+
+<!-- EXAMPLE 2: Custom Messages -->
+<!-- Customize the modal title and message -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="beta2024"
+        data-lockin-title="Beta Access"
+        data-lockin-message="This is a private beta. Please enter your access code."
+        data-lockin-placeholder="Access code"></script>
+
+
+<!-- EXAMPLE 3: No Branding -->
+<!-- Remove the "Protected by LockIn" footer -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="vip2024"
+        data-lockin-branding="hide"></script>
+
+
+<!-- EXAMPLE 4: Limited Attempts -->
+<!-- Allow only 3 password attempts -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="premium"
+        data-lockin-max-attempts="3"
+        data-lockin-error="Invalid password. Check your email for the correct code."></script>
+
+
+<!-- EXAMPLE 5: Full Customization -->
+<!-- Customize everything including button text -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="corporate123"
+        data-lockin-title="Internal Portal"
+        data-lockin-message="This portal is for employees only. Enter your PIN to continue."
+        data-lockin-placeholder="Enter PIN"
+        data-lockin-submit="Login"
+        data-lockin-error="Incorrect PIN. Please try again."
+        data-lockin-branding="hide"
+        data-lockin-max-attempts="5"></script>
+
+
+<!-- EXAMPLE 6: Client Preview Page -->
+<!-- Perfect for showing work to clients -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="ClientReview2024"
+        data-lockin-title="Client Preview"
+        data-lockin-message="Hi! Enter the password from our email to view your project."
+        data-lockin-submit="View Project"></script>
+
+
+<!-- EXAMPLE 7: Development/Staging -->
+<!-- Protect staging environments -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="staging456"
+        data-lockin-title="Staging Environment"
+        data-lockin-message="This is a staging server. Team members only."
+        data-lockin-branding="hide"></script>
+
+
+<!-- EXAMPLE 8: Event Registration -->
+<!-- Lock content until event code is entered -->
+<script src="https://your-cdn.com/lockin.min.js" 
+        data-lockin-key="YOUR_LICENSE_KEY"
+        data-lockin-password="EVENT2024"
+        data-lockin-title="Event Materials"
+        data-lockin-message="Enter the code from your event badge to access materials."
+        data-lockin-placeholder="Event code"
+        data-lockin-submit="Access Materials"></script>
+
+
+<!-- COMPLETE HTML EXAMPLE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Private Content</h1>
+    <p>This page is password protected. Only authorized users can view this content.</p>
+    
+    <h2>What you'll find here:</h2>
+    <ul>
+        <li>Exclusive articles</li>
+        <li>Premium resources</li>
+        <li>Member-only updates</li>
+    </ul>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    
+    <!-- LockIn Script - Place before closing body tag -->
+    <script src="https://your-cdn.com/lockin.min.js" 
+            data-lockin-key="YOUR_LICENSE_KEY"
+            data-lockin-password="secret123"
+            data-lockin-title="Members Only"
+            data-lockin-message="Please enter your member password"></script>
+</body>
+</html>

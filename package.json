@@ -1,0 +1,24 @@
+{
+  "name": "lockin-page",
+  "version": "1.0.0",
+  "description": "Production-ready client-side JavaScript SaaS script for webpage access control",
+  "main": "lockin.js",
+  "scripts": {
+    "build": "npm run minify",
+    "minify": "npx terser lockin.js -c -m --comments false -o lockin.min.js"
+  },
+  "keywords": [
+    "page-lock",
+    "password-protection",
+    "access-control",
+    "saas",
+    "client-side",
+    "modal",
+    "authentication"
+  ],
+  "author": "ReceiptX",
+  "license": "Commercial",
+  "devDependencies": {
+    "terser": "^5.16.0"
+  }
+}
