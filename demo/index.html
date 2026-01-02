@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LockIn.page Demo</title>
+    <style>
+      :root { color-scheme: dark; }
+      body { max-width: 760px; margin: 40px auto; padding: 0 16px; line-height: 1.6; background: #0b0f1a; color: #cbd5e1; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      section { background: #0f172a; border: 1px solid #1f2937; border-radius: 14px; padding: 18px 16px; margin: 14px 0; }
+      h1, h2 { color: #e5e7eb; }
+      a { color: #22d3ee; }
+      code, pre { white-space: pre-wrap; }
+      pre { background: #0b1220; border: 1px solid #1f2937; border-radius: 12px; padding: 14px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>LockIn.page Demo</h1>
+
+    <section>
+      <h2>What this is</h2>
+      <p>This is a demo page that installs LockIn.page using a single <code>&lt;script&gt;</code> tag.</p>
+      <p><strong>Demo password:</strong> <code>demo</code></p>
+    </section>
+
+    <section>
+      <h2>Install snippet used on this page</h2>
+        <pre><code>&lt;script
+      src="../lockin.js"
+  data-license="DEMO-LICENSE"
+  data-password="demo"
+  data-text="Demo: enter the password to view this page."&gt;
+&lt;/script&gt;
+</code></pre>
+    </section>
+
+    <section>
+      <h2>Demo content</h2>
+      <p>If you can read this, the page is unlocked.</p>
+      <p>Replace <code>data-password</code> and <code>data-license</code> with your buyer’s values.</p>
+    </section>
+
+    <script
+      src="../lockin.js"
+      data-license="DEMO-LICENSE"
+      data-password="demo"
+      data-text="Demo: enter the password to view this page.">
+    </script>
+  </body>
+</html>

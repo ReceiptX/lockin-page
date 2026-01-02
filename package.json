@@ -1,0 +1,17 @@
+{
+  "name": "lockin-page",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "LockIn.page static frontend (GitHub Pages) + optional Vercel Postgres-backed license validation API",
+  "scripts": {
+    "issue:pg": "node tools/issue-license-pg.js",
+    "init:pg": "node tools/init-db-pg.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
