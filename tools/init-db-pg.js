@@ -1,12 +1,13 @@
 "use strict";
 
 const { Pool } = require("pg");
+const { resolveDatabaseUrl } = require("./dbUrl");
 
 async function main() {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = resolveDatabaseUrl();
   if (!connectionString) {
     // eslint-disable-next-line no-console
-    console.error("Missing DATABASE_URL");
+    console.error("Missing database URL. Set DATABASE_URL or POSTGRES_URL.");
     process.exitCode = 1;
     return;
   }

@@ -34,12 +34,15 @@ Important: the old SQLite backend in `server/` is for local/dev only. Vercel nee
 ### Deploy
 
 1. Create a new Vercel project from this repo
-2. Add env vars:
-   - `DATABASE_URL` (Postgres connection string)
+2. Connect **Vercel Postgres** (Storage tab). This automatically injects `POSTGRES_URL` (and related vars) into your project.
+3. Add env vars:
+  - `DATABASE_URL` (optional if you connected Vercel Postgres; otherwise required)
    - `CORS_ALLOW_ORIGIN` (recommended: your GitHub Pages origin, e.g. `https://<your-user>.github.io`)
    - `AUTO_BIND_DOMAIN` (optional, default `true`)
    - `RATE_LIMIT_WINDOW_MS` (optional, default `60000`)
    - `RATE_LIMIT_MAX` (optional, default `120`)
+
+Important: Vercel **Deployment Protection** must be disabled for Production if you want buyers' browsers to call your API.
 
 Endpoints (via `vercel.json` rewrites):
 - `GET /health`
@@ -58,12 +61,12 @@ Endpoints (via `vercel.json` rewrites):
 
 ### Issue a license (Postgres)
 
-Run locally (needs `DATABASE_URL` set):
+Run locally (needs `DATABASE_URL` or `POSTGRES_URL` set):
 
 ```powershell
 Push-Location "c:\\Users\\Administrator\\lockin-page"
 npm install
-$env:DATABASE_URL = "postgres://..."
+$env:DATABASE_URL = "postgres://..."  # or: $env:POSTGRES_URL = "postgres://..."
 npm run issue:pg -- --email buyer@email.com
 ```
 

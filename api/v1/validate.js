@@ -18,6 +18,32 @@ function getHostFromOrigin(origin) {
   return url.host;
 }
 
+function resolveDatabaseUrl() {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+
+  const candidates = [
+    process.env.POSTGRES_URL,
+    process.env.POSTGRES_PRISMA_URL,
+    process.env.POSTGRES_URL_NON_POOLING,
+  ].filter((v) => typeof v === "string" && v.trim() !== "");
+
+  if (candidates.length > 0) return candidates[0];
+
+  const host = process.env.POSTGRES_HOST;
+  const user = process.env.POSTGRES_USER;
+  const password = process.env.POSTGRES_PASSWORD;
+  const database = process.env.POSTGRES_DATABASE;
+  const port = process.env.POSTGRES_PORT || "5432";
+
+  if (host && user && password && database) {
+    return `postgresql://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}:${port}/${encodeURIComponent(
+      database
+    )}`;
+  }
+
+  return null;
+}
+
 async function readJsonBody(req) {
   if (req.body && typeof req.body === "object") return req.body;
   if (typeof req.body === "string" && req.body.length > 0) {
@@ -42,9 +68,11 @@ const rateLimit = createRateLimiter({
 function getPool() {
   if (pool) return pool;
 
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = resolveDatabaseUrl();
   if (!connectionString) {
-    const err = new Error("Missing DATABASE_URL");
+    const err = new Error(
+      "Missing database configuration. Set DATABASE_URL or connect Vercel Postgres (POSTGRES_URL)."
+    );
     err.code = "MISSING_DATABASE_URL";
     throw err;
   }
@@ -106,7 +134,11 @@ module.exports = async (req, res) => {
     const code = err && err.code ? String(err.code) : "DB_ERROR";
     res.statusCode = 500;
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.end(JSON.stringify({ ok: false, code, message: "Backend database is not configured" }));
+    const message =
+      code === "MISSING_DATABASE_URL" && err && err.message
+        ? String(err.message)
+        : "Backend database is not configured";
+    res.end(JSON.stringify({ ok: false, code, message }));
     return;
   }
 
